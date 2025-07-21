@@ -6,6 +6,7 @@ import Footer from "@/components/footer";
 import ThemeContextProvider from "@/context/theme-context";
 import { Toaster } from "react-hot-toast";
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from "@vercel/analytics/next"
 const sora = Sora({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"] });
 
 export const metadata = {
@@ -31,7 +32,8 @@ export default function RootLayout({
             <Header />
             {children}
             <Footer />
- <SpeedInsights />
+            <SpeedInsights />
+            <Analytics />
             <Toaster position="top-right" />
           </ActiveSectionContextProvider>
         </ThemeContextProvider>
