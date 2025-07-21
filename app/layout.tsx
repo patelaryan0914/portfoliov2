@@ -5,12 +5,12 @@ import ActiveSectionContextProvider from "@/context/active-section-context";
 import Footer from "@/components/footer";
 import ThemeContextProvider from "@/context/theme-context";
 import { Toaster } from "react-hot-toast";
-
+import { SpeedInsights } from '@vercel/speed-insights/next';
 const sora = Sora({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"] });
 
 export const metadata = {
   title: "Aryan Patel | Portfolio",
-  description: "Aryan Patel is a Software Engineer .",
+  description: "Aryan Patel is a Software Engineer.",
 };
 
 export default function RootLayout({
@@ -31,7 +31,7 @@ export default function RootLayout({
             <Header />
             {children}
             <Footer />
-
+ <SpeedInsights />
             <Toaster position="top-right" />
           </ActiveSectionContextProvider>
         </ThemeContextProvider>
