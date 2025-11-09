@@ -4,7 +4,7 @@ import { FaNodeJs } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 import callsconnectaiImg from "@/public/callsconnectai.svg";
 import bandhucareImg from "@/public/bandhucare.svg";
-
+import shravanaiImg from "@/public/shravanai.png"
 export const links = [
   {
     name: "Home",
@@ -66,16 +66,23 @@ export const projectsData = [
     title: "CallsConnectAI – Smart India Hackathon Finalist",
     description:
       "AI-powered call center platform using STT and LLMs; selected among top 5 teams at SIH 2024.",
-    tags: ["Next.js", "Node.js", "MongoDB","Livekit"],
+    tags: ["Next.js", "Node.js", "MongoDB", "Livekit"],
     imageUrl: callsconnectaiImg,
   },
   {
     title: "BandhuCare – CMC Vellore Collaboration",
     description:
       "Multilingual post-medication support platform built with IIIT Hyderabad and CMC Vellore.",
-    tags: ["Next.js", "Node.js", "MongoDB", "Kafka"],
+    tags: ["Next.js", "Node.js", "MongoDB", "Redis"],
     imageUrl: bandhucareImg,
   },
+  {
+    title: "Shravan Ai",
+    description:
+      "Minutes of Minutes in Indian Languages.",
+    tags: ["Next.js", "Node.js", "MongoDB", "LLM", "Speech to Text"],
+    imageUrl: shravanaiImg,
+  }
 ] as const;
 
 

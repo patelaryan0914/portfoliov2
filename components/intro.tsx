@@ -42,7 +42,12 @@ export default function Intro() {
             className="absolute bottom-0 right-0 text-4xl"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ type: "spring", stiffness: 125, delay: 0.1, duration: 0.7 }}
+            transition={{
+              type: "spring",
+              stiffness: 125,
+              delay: 0.1,
+              duration: 0.7,
+            }}
           >
             👋
           </motion.span>
@@ -55,10 +60,11 @@ export default function Intro() {
         animate={{ opacity: 1, y: 0 }}
       >
         <span className="font-bold">Hi, I'm Aryan Patel.</span> I'm a{" "}
-        <span className="font-bold">full-stack software engineer</span> who enjoys building{" "}
-        <span className="italic">scalable web platforms</span> using{" "}
-        <span className="underline">Next.js, Node.js, and MongoDB</span>. I’m currently building{" "}
-        <span className="font-bold">BandhuCare</span> with IIIT Hyderabad & CMC Vellore.
+        <span className="font-bold">full-stack software engineer</span> who
+        enjoys building <span className="italic">scalable web platforms</span>{" "}
+        using <span className="underline">Next.js, Node.js, and MongoDB</span>.
+        I’m currently building <span className="font-bold">BandhuCare</span>{" "}
+        with IIIT Hyderabad & CMC Vellore.
       </motion.h1>
 
       <motion.div
@@ -81,7 +87,7 @@ export default function Intro() {
 
         <a
           className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer border border-black/10"
-          href="/Aryan_Patel_Resume.pdf"
+          href="/Aryan_Patel-Resume.pdf"
           download
         >
           Download CV{" "}
