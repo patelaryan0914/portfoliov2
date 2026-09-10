@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { ArrowRight, Download, Mail } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
@@ -56,11 +55,7 @@ export default function Intro() {
     >
       <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
         {/* Left */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <div>
           <div className="mb-6 inline-flex items-center gap-3">
             <div className="relative">
               <Image
@@ -137,16 +132,11 @@ export default function Intro() {
               </Button>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Right — terminal card */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="relative"
-        >
-          <div className="absolute -inset-6 -z-10 rounded-full bg-primary/20 blur-3xl" />
+        <div className="relative">
+          <div className="absolute -inset-6 -z-10 rounded-full bg-primary/20 blur-2xl" />
 
           {/* Floating tech icons */}
           <div className="absolute -top-6 right-2 z-10 flex max-w-[300px] flex-wrap justify-end gap-3 sm:-right-4">
@@ -154,7 +144,7 @@ export default function Intro() {
               <div
                 key={name}
                 title={name}
-                className="flex h-11 w-11 animate-float items-center justify-center rounded-xl border border-border/70 bg-card/90 shadow-md backdrop-blur"
+                className="flex h-11 w-11 animate-float items-center justify-center rounded-xl border border-border/70 bg-card shadow-md"
                 style={{ animationDelay: `${(i % 5) * 0.7}s` }}
               >
                 <Icon
@@ -196,7 +186,7 @@ export default function Intro() {
               </code>
             </pre>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

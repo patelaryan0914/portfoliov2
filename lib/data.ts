@@ -27,6 +27,7 @@ export const personal = {
   roles: [
     "Full-Stack Engineer",
     "Backend Engineer",
+    "Frontend Engineer",
     "AI / RAG Systems",
     "Scalable System Architecture",
   ],

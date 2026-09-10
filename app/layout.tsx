@@ -17,16 +17,19 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
+  preload: true,
 });
 const grotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-heading",
   display: "swap",
+  preload: false,
 });
 const mono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -110,11 +113,15 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ActiveSectionContextProvider>
-            {/* Ambient background */}
-            <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-              <div className="absolute inset-0 bg-grid-pattern bg-[size:44px_44px] opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_75%)]" />
-              <div className="absolute -top-40 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-primary/10 blur-[10rem]" />
-            </div>
+            {/* Ambient background (GPU-cheap: no filter blur) */}
+            <div
+              className="pointer-events-none fixed inset-0 -z-10 bg-grid-pattern bg-[size:44px_44px] opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_75%)]"
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-[36rem] [background:radial-gradient(50%_60%_at_50%_-10%,hsl(var(--primary)/0.14),transparent_70%)]"
+              aria-hidden
+            />
 
             <ScrollProgress />
             <Header />

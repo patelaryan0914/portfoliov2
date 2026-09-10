@@ -22,7 +22,7 @@ export default function Header() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-[999]">
-      <div className="mx-auto mt-3 flex h-14 max-w-5xl items-center justify-between gap-4 rounded-full border border-border/60 bg-background/70 px-4 shadow-lg shadow-black/5 backdrop-blur-lg sm:mt-4 sm:px-6">
+      <div className="mx-auto mt-3 flex h-14 max-w-5xl items-center justify-between gap-4 rounded-full border border-border/60 bg-background/80 px-4 shadow-lg shadow-black/5 backdrop-blur-md sm:mt-4 sm:px-6">
         <Link
           href="#home"
           onClick={() => handleNav("Home")}
