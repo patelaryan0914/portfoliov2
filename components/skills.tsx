@@ -1,52 +1,54 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
+
 import SectionHeading from "./section-heading";
 import { skillsData } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
-import { motion } from "framer-motion";
-
-const fadeInAnimationVariants = {
-  initial: {
-    opacity: 0,
-    y: 100,
-  },
-  animate: (index: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: 0.05 * index,
-    },
-  }),
-};
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 export default function Skills() {
-  const { ref } = useSectionInView("Skills");
+  const { ref } = useSectionInView("Skills", 0.35);
 
   return (
     <section
-      id="skills"
       ref={ref}
-      className=" max-w-[53rem] scroll-mt-28 text-center"
+      id="skills"
+      className="mx-auto max-w-6xl scroll-mt-28 px-4 py-24"
     >
-      <SectionHeading>My skills</SectionHeading>
-      <ul className="flex flex-wrap justify-center gap-2 text-lg text-gray-800">
-        {skillsData.map((skill, index) => (
-          <motion.li
-            className="bg-white borderBlack rounded-xl px-5 py-3"
-            key={index}
-            variants={fadeInAnimationVariants}
-            initial="initial"
-            whileInView="animate"
-            viewport={{
-              once: true,
-            }}
-            custom={index}
+      <SectionHeading eyebrow="What I work with">My Skills</SectionHeading>
+
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {skillsData.map((group, i) => (
+          <motion.div
+            key={group.category}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: i * 0.08 }}
           >
-            {skill}
-          </motion.li>
+            <Card className="h-full transition-colors hover:border-primary/50">
+              <CardContent className="p-6">
+                <div className="mb-4 flex items-center gap-2">
+                  <span className="font-mono text-xs text-primary">0{i + 1}</span>
+                  <h3 className="font-heading text-lg font-semibold">
+                    {group.category}
+                  </h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <Badge key={item} variant="secondary" className="font-normal">
+                      {item}
+                    </Badge>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
         ))}
-      </ul>
+      </div>
     </section>
   );
 }

@@ -1,51 +1,98 @@
 "use client";
 
 import React from "react";
-import SectionHeading from "./section-heading";
 import { motion } from "framer-motion";
+import { Brain, Cloud, Layers, Server, type LucideIcon } from "lucide-react";
+
+import SectionHeading from "./section-heading";
+import { aboutHighlights, personal } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
+import { Card, CardContent } from "@/components/ui/card";
+
+const iconMap: Record<string, LucideIcon> = {
+  server: Server,
+  layers: Layers,
+  brain: Brain,
+  cloud: Cloud,
+};
 
 export default function About() {
-  const { ref } = useSectionInView("About");
+  const { ref } = useSectionInView("About", 0.4);
 
   return (
-    <motion.section
+    <section
       ref={ref}
-      className=" max-w-[45rem] text-center leading-8 scroll-mt-28"
-      initial={{ opacity: 0, y: 100 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.175 }}
       id="about"
+      className="mx-auto max-w-6xl scroll-mt-28 px-4 py-24"
     >
-      <SectionHeading>About me</SectionHeading>
-      <p className="mb-3">
-        I'm a Computer Science Engineering graduate from{" "}
-        <span className="font-medium">Charusat University</span>, passionate about building scalable,
-        real-world web applications. I currently work as a{" "}
-        <span className="font-medium">Full Stack Software Engineer</span> at{" "}
-        IIIT Hyderabad’s{" "}
-        <span className="font-medium">Language Technologies Research Center</span>,
-        where I’m leading the development of{" "}
-        <span className="font-medium">BandhuCare</span> — a multilingual post-medication support platform
-        for patients, developed in collaboration with{" "}
-        <span className="font-medium">CMC Vellore</span>.
-      </p>
+      <SectionHeading eyebrow="Who I am">About Me</SectionHeading>
 
-      <p>
-        I specialize in technologies like{" "}
-        <span className="font-medium">Next.js, Node.js, and MongoDB</span>, and have hands-on experience
-        with <span className="font-medium">Redis, PostgreSQL, Docker, AWS</span>, and{" "}
-        <span className="font-medium">GitHub Actions</span>. Previously, I interned at{" "}
-        <span className="font-medium">Covrize</span>, where I worked on full-stack features and helped
-        improve cloud deployments by 40%.
-      </p>
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        {/* Terminal-style bio */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <Card className="h-full">
+            <CardContent className="p-6">
+              <div className="mb-4 flex items-center gap-2">
+                <span className="h-3 w-3 rounded-full bg-red-500" />
+                <span className="h-3 w-3 rounded-full bg-yellow-500" />
+                <span className="h-3 w-3 rounded-full bg-green-500" />
+              </div>
+              <p className="font-mono text-sm">
+                <span className="text-emerald-500">aryan@dev</span>
+                <span className="text-muted-foreground">:</span>
+                <span className="text-primary">~$</span>{" "}
+                <span className="text-muted-foreground">cat about.md</span>
+              </p>
+              <p className="mt-4 leading-relaxed text-muted-foreground">
+                {personal.summary}
+              </p>
+              <p className="mt-4 leading-relaxed text-muted-foreground">
+                I&apos;m currently pursuing a Master of Applied Computer Science
+                at Concordia University in Montreal, after leading full-stack
+                development at IIIT Hyderabad&apos;s Language Technologies
+                Research Center. I enjoy turning complex problems into clean,
+                scalable systems — from multi-tenant backends and low-latency
+                APIs to RAG platforms.
+              </p>
+            </CardContent>
+          </Card>
+        </motion.div>
 
-      <p>
-        I was also a finalist at the{" "}
-        <span className="font-medium">Smart India Hackathon 2024</span>, where my team ranked in the top 5
-        nationally. Outside of work, I enjoy solving system design problems, learning cloud architecture,
-        and contributing to healthcare tech solutions.
-      </p>
-    </motion.section>
+        {/* Highlight cards */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {aboutHighlights.map((item, i) => {
+            const Icon = iconMap[item.icon];
+            return (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+              >
+                <Card className="group h-full transition-colors hover:border-primary/60">
+                  <CardContent className="p-6">
+                    <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                      {Icon && <Icon className="h-5 w-5" />}
+                    </div>
+                    <h3 className="font-heading text-lg font-semibold">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1.5 text-sm text-muted-foreground">
+                      {item.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
   );
 }
