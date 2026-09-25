@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Briefcase, MapPin } from "lucide-react";
 
 import SectionHeading from "./section-heading";
-import { experiencesData, experienceStats } from "@/lib/data";
+import { experiencesData } from "@/lib/data";
 import { useSectionInView } from "@/lib/hooks";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -89,30 +89,6 @@ export default function Experience() {
             </motion.div>
           ))}
         </div>
-      </div>
-
-      {/* Stats */}
-      <div className="mt-16 grid grid-cols-2 gap-4 md:grid-cols-4">
-        {experienceStats.map((stat, i) => (
-          <motion.div
-            key={stat.label}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.3, delay: i * 0.08 }}
-          >
-            <Card className="text-center transition-transform hover:-translate-y-1">
-              <CardContent className="p-6">
-                <div className="font-heading text-3xl font-bold text-primary">
-                  {stat.value}
-                </div>
-                <div className="mt-1 text-sm text-muted-foreground">
-                  {stat.label}
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
       </div>
     </section>
   );

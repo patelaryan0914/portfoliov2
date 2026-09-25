@@ -1,13 +1,14 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   Bot,
   ExternalLink,
   HeartPulse,
-  Phone,
-  PlayCircle,
+  Mic,
+  PenLine,
   Sparkles,
   type LucideIcon,
 } from "lucide-react";
@@ -21,9 +22,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 const iconMap: Record<string, LucideIcon> = {
-  phone: Phone,
   bot: Bot,
   "heart-pulse": HeartPulse,
+  mic: Mic,
+  "pen-line": PenLine,
 };
 
 export default function Projects() {
@@ -39,7 +41,7 @@ export default function Projects() {
         Featured Projects
       </SectionHeading>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {projectsData.map((project, i) => {
           const Icon = iconMap[project.icon] ?? Sparkles;
           return (
@@ -51,15 +53,36 @@ export default function Projects() {
               transition={{ duration: 0.45, delay: i * 0.1 }}
             >
               <Card className="group flex h-full flex-col overflow-hidden transition-colors hover:border-primary/60">
-                <div className="relative flex h-32 items-center justify-center overflow-hidden bg-linear-to-br from-primary/20 via-primary/5 to-transparent">
-                  <Icon className="h-12 w-12 text-primary transition-transform duration-300 group-hover:scale-110" />
-                  {project.highlight && (
-                    <Badge className="absolute right-3 top-3 gap-1">
-                      <Sparkles className="h-3 w-3" />
-                      {project.highlight}
-                    </Badge>
-                  )}
-                </div>
+                {project.image ? (
+                  <div className="relative aspect-video overflow-hidden bg-muted">
+                    <Image
+                      src={project.image}
+                      alt={`${project.title} homepage`}
+                      fill
+                      className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                    />
+                    {project.highlight && (
+                      <Badge className="absolute right-3 top-3 gap-1">
+                        <Sparkles className="h-3 w-3" />
+                        {project.highlight}
+                      </Badge>
+                    )}
+                  </div>
+                ) : (
+                  <div className="relative flex h-32 items-center justify-center overflow-hidden bg-linear-to-br from-primary/20 via-primary/5 to-transparent">
+                    <span className="absolute left-3 top-3 font-mono text-xs font-medium text-primary/80">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <Icon className="h-12 w-12 text-primary transition-transform duration-300 group-hover:scale-110" />
+                    {project.highlight && (
+                      <Badge className="absolute right-3 top-3 gap-1">
+                        <Sparkles className="h-3 w-3" />
+                        {project.highlight}
+                      </Badge>
+                    )}
+                  </div>
+                )}
 
                 <CardContent className="flex flex-1 flex-col p-6">
                   <h3 className="font-heading text-xl font-bold">
@@ -85,7 +108,7 @@ export default function Projects() {
                   </div>
 
                   <div className="mt-5 flex gap-2">
-                    {"demo" in project.links && project.links.demo && (
+                    {project.links.demo && (
                       <Button asChild size="sm" variant="secondary">
                         <a
                           href={project.links.demo}
@@ -97,19 +120,7 @@ export default function Projects() {
                         </a>
                       </Button>
                     )}
-                    {"pitch" in project.links && project.links.pitch && (
-                      <Button asChild size="sm" variant="secondary">
-                        <a
-                          href={project.links.pitch}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          <PlayCircle className="h-4 w-4" />
-                          Pitch
-                        </a>
-                      </Button>
-                    )}
-                    {project.links.github && (
+                    {"github" in project.links && project.links.github && (
                       <Button asChild size="sm" variant="outline">
                         <a
                           href={project.links.github}

@@ -150,47 +150,59 @@ export const experiencesData = [
   },
 ] as const;
 
-export const experienceStats = [
-  { value: "40%", label: "API Perf Boost" },
-  { value: "30%", label: "Query Optimization" },
-  { value: "40%", label: "Faster Deploys" },
-  { value: "2+", label: "Years Building" },
-] as const;
-
 export const projectsData = [
   {
-    title: "CallsConnectAI",
-    subtitle: "AI-Powered Call Center",
-    icon: "phone",
-    highlight: "Smart India Hackathon 2024 Finalist",
+    title: "BandhuCare",
+    subtitle: "Multi-tenant Healthcare Platform",
+    icon: "heart-pulse",
+    highlight: "IIIT Hyderabad × CMC Vellore",
+    image: "/projects/bandhucare.png",
     description:
-      "Multilingual AI call center using Speech-to-Text and LLMs, cutting operational costs by 30%. Automated complaint handling and follow-ups improved efficiency by 40%, with LiveKit powering real-time concurrent voice calls.",
-    tags: ["STT", "LLM", "LiveKit", "Node.js", "Next.js"],
-    links: {
-      demo: "https://youtu.be/IJPS3V9nYsQ?si=NqCNcnsn16FYWbhy",
-      pitch: "https://youtu.be/s5PgWyDDenQ?si=I-AI7uotv92pXZk-",
-      github: personal.github,
-    },
+      "Post-medication support platform built at IIIT Hyderabad (LTRC) with a multi-tenant architecture, an admin panel, and IIIT translation models enabling multilingual patient workflows.",
+    tags: ["React", "Node.js", "MongoDB", "Redis"],
+    links: { demo: "https://bandhu.care" },
   },
   {
     title: "DocAssist",
     subtitle: "Documentation Intelligence Platform (RAG)",
     icon: "bot",
     highlight: "Production",
+    image: "/projects/docassist.png",
     description:
       "Full-stack RAG platform that lets developers chat with documentation such as LiveKit and Stripe. Sitemap-based ingestion, chunking, and vector indexing power semantic search and context-aware answers.",
     tags: ["RAG", "Vector Search", "Embeddings", "Next.js", "Node.js"],
-    links: { demo: "https://docassist.aryan-dev.in", github: personal.github },
+    links: {
+      demo: "https://docassist.aryan-dev.in",
+      github: "https://github.com/patelaryan0914/docassist",
+    },
   },
   {
-    title: "BandhuCare",
-    subtitle: "Multi-tenant Healthcare Platform",
-    icon: "heart-pulse",
-    highlight: "IIIT Hyderabad × CMC Vellore",
+    title: "PixelPen",
+    subtitle: "Blogging Platform",
+    icon: "pen-line",
+    highlight: "Full-Stack",
+    image: "/projects/pixelpen.png",
     description:
-      "Post-medication support platform built at IIIT Hyderabad (LTRC) with a multi-tenant architecture, an admin panel, and IIIT translation models enabling multilingual patient workflows.",
-    tags: ["React", "Node.js", "MongoDB", "Redis"],
-    links: { github: personal.github },
+      "Full-stack blogging platform with Editor.js rich text, auth, likes, comments, tags, subscriptions, and S3 media uploads. Readers discover posts by topic while writers publish, manage, and share long-form content.",
+    tags: ["Next.js", "Prisma", "PostgreSQL", "AWS S3", "Editor.js"],
+    links: {
+      demo: "https://pixelpen.aryan-dev.in",
+      github: "https://github.com/patelaryan0914/pixelpen",
+    },
+  },
+  {
+    title: "Swipe",
+    subtitle: "AI-Powered Interview Assistant",
+    icon: "mic",
+    highlight: "Interview Buddy",
+    image: "/projects/swipe.png",
+    description:
+      "Resume-aware interview buddy that extracts your profile, runs timed easy-to-hard questions, auto-submits on timeout, and returns an AI score plus summary. Includes an interviewer dashboard for candidate history, search, and scoring.",
+    tags: ["Next.js", "Gemini", "Redux", "shadcn/ui"],
+    links: {
+      demo: "https://swipe.aryan-dev.in",
+      github: "https://github.com/patelaryan0914/swipe",
+    },
   },
 ] as const;
 

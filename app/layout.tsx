@@ -10,6 +10,8 @@ import ActiveSectionContextProvider from "@/context/active-section-context";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import ScrollProgress from "@/components/scroll-progress";
+import SmoothScroll from "@/components/smooth-scroll";
+import CursorFX from "@/components/cursor-fx";
 import StructuredData from "@/components/structured-data";
 import { siteConfig, siteUrl } from "@/lib/site";
 
@@ -85,10 +87,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#121212" },
-  ],
+  themeColor: "#121212",
   width: "device-width",
   initialScale: 1,
 };
@@ -102,7 +101,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${grotesk.variable} ${mono.variable}`}
+      className={`dark ${inter.variable} ${grotesk.variable} ${mono.variable}`}
     >
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
         <StructuredData />
@@ -110,6 +109,7 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="dark"
           enableSystem={false}
+          storageKey="aryan-portfolio-theme"
           disableTransitionOnChange
         >
           <ActiveSectionContextProvider>
@@ -123,6 +123,8 @@ export default function RootLayout({
               aria-hidden
             />
 
+            <SmoothScroll />
+            <CursorFX />
             <ScrollProgress />
             <Header />
             <main>{children}</main>
