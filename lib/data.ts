@@ -178,12 +178,12 @@ export const projectsData = [
   },
   {
     title: "PixelPen",
-    subtitle: "Blogging Platform",
+    subtitle: "AI-Powered Blog",
     icon: "pen-line",
     highlight: "Full-Stack",
     image: "/projects/pixelpen.png",
     description:
-      "Full-stack blogging platform with Editor.js rich text, auth, likes, comments, tags, subscriptions, and S3 media uploads. Readers discover posts by topic while writers publish, manage, and share long-form content.",
+      "AI-powered blogging platform where writers draft with an assistant that rewrites a selection and suggests the title, URL, description, and tags. Readers follow authors, like stories, and discover posts by topic.",
     tags: ["Next.js", "Prisma", "PostgreSQL", "AWS S3", "Editor.js"],
     links: {
       demo: "https://pixelpen.aryan-dev.in",
