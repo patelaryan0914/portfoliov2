@@ -3,15 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import {
-  Bot,
-  ExternalLink,
-  HeartPulse,
-  Mic,
-  PenLine,
-  Sparkles,
-  type LucideIcon,
-} from "lucide-react";
+import { ExternalLink, Sparkles } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 
 import SectionHeading from "./section-heading";
@@ -20,13 +12,6 @@ import { useSectionInView } from "@/lib/hooks";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-
-const iconMap: Record<string, LucideIcon> = {
-  bot: Bot,
-  "heart-pulse": HeartPulse,
-  mic: Mic,
-  "pen-line": PenLine,
-};
 
 export default function Projects() {
   const { ref } = useSectionInView("Projects", 0.2);
@@ -43,7 +28,6 @@ export default function Projects() {
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {projectsData.map((project, i) => {
-          const Icon = iconMap[project.icon] ?? Sparkles;
           return (
             <motion.div
               key={project.title}
@@ -53,36 +37,21 @@ export default function Projects() {
               transition={{ duration: 0.45, delay: i * 0.1 }}
             >
               <Card className="group flex h-full flex-col overflow-hidden transition-colors hover:border-primary/60">
-                {project.image ? (
-                  <div className="relative aspect-video overflow-hidden bg-muted">
-                    <Image
-                      src={project.image}
-                      alt={`${project.title} homepage`}
-                      fill
-                      className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
-                      sizes="(min-width: 768px) 50vw, 100vw"
-                    />
-                    {project.highlight && (
-                      <Badge className="absolute right-3 top-3 gap-1">
-                        <Sparkles className="h-3 w-3" />
-                        {project.highlight}
-                      </Badge>
-                    )}
-                  </div>
-                ) : (
-                  <div className="relative flex h-32 items-center justify-center overflow-hidden bg-linear-to-br from-primary/20 via-primary/5 to-transparent">
-                    <span className="absolute left-3 top-3 font-mono text-xs font-medium text-primary/80">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <Icon className="h-12 w-12 text-primary transition-transform duration-300 group-hover:scale-110" />
-                    {project.highlight && (
-                      <Badge className="absolute right-3 top-3 gap-1">
-                        <Sparkles className="h-3 w-3" />
-                        {project.highlight}
-                      </Badge>
-                    )}
-                  </div>
-                )}
+                <div className="relative aspect-video overflow-hidden bg-muted">
+                  <Image
+                    src={project.image}
+                    alt={`${project.title} homepage`}
+                    fill
+                    className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                  />
+                  {project.highlight && (
+                    <Badge className="absolute right-3 top-3 gap-1">
+                      <Sparkles className="h-3 w-3" />
+                      {project.highlight}
+                    </Badge>
+                  )}
+                </div>
 
                 <CardContent className="flex flex-1 flex-col p-6">
                   <h3 className="font-heading text-xl font-bold">
